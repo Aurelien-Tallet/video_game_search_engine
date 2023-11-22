@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @RestController
 public class GameController {
 
-    private RestHighLevelClient client;
+    private final RestHighLevelClient client;
 
     public GameController(RestHighLevelClient client) {
         this.client = client;
