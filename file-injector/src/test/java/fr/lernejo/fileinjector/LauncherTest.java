@@ -14,4 +14,9 @@ class LauncherTest {
             Duration.ofSeconds(5L),
             () -> Launcher.main(new String[]{}));
     }
+
+   @Test
+    void main_with_file_injector() {
+        Launcher.main(new String[]{"src/test/resources/games.json"});
+    }
 }
