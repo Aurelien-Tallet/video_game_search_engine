@@ -37,11 +37,8 @@ public class GameController {
 
         SearchRequest searchRequest = new SearchRequest();
         searchRequest.source(sourceBuilder);
-
         SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
         var searchHits = response.getHits().getHits();
-        return Arrays.stream(searchHits)
-            .map(SearchHit::getSourceAsMap)
-            .collect(Collectors.toList());
+        return Arrays.stream(searchHits).map(SearchHit::getSourceAsMap).collect(Collectors.toList());
     }
 }

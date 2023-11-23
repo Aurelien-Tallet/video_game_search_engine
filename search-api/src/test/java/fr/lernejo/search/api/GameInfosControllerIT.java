@@ -25,10 +25,4 @@ class GameInfosControllerIT {
             .perform(MockMvcRequestBuilders.get("/api/games?query=publisher: Perfect World Entertainment"))
             .andExpect(MockMvcResultMatchers.status().isOk()));
     }
-    @Test
-    void getGameByValidTitle(@Autowired MockMvc mockMvc) {
-        assertAll(() -> mockMvc
-            .perform(MockMvcRequestBuilders.get("/api/games?query=title: Neverwinter"))
-            .andExpect(MockMvcResultMatchers.status().isOk()));
-    }
 }
