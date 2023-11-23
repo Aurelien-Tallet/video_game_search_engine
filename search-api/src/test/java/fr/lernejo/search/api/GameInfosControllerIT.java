@@ -14,15 +14,21 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 @AutoConfigureMockMvc
 class GameInfosControllerIT {
     @Test
-    void getGameInfoValidURI(@Autowired MockMvc mockMvc) {
-        assertAll(() -> mockMvc
-            .perform(MockMvcRequestBuilders.get("/api/games?query=developer:CD Projekt Red"))
-            .andExpect(MockMvcResultMatchers.status().isOk()));
-    }
-    @Test
-     void getBadEndpoint(@Autowired MockMvc mockMvc) throws Exception {
+    void getBadEndpoint(@Autowired MockMvc mockMvc) throws Exception {
         mockMvc
             .perform(MockMvcRequestBuilders.get("/api/failed"))
             .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+    @Test
+    void getGameByValidPublisher(@Autowired MockMvc mockMvc) {
+        assertAll(() -> mockMvc
+            .perform(MockMvcRequestBuilders.get("/api/games?query=publisher: Perfect World Entertainment"))
+            .andExpect(MockMvcResultMatchers.status().isOk()));
+    }
+    @Test
+    void getGameByValidTitle(@Autowired MockMvc mockMvc) {
+        assertAll(() -> mockMvc
+            .perform(MockMvcRequestBuilders.get("/api/games?query=title: Neverwinter"))
+            .andExpect(MockMvcResultMatchers.status().isOk()));
     }
 }
